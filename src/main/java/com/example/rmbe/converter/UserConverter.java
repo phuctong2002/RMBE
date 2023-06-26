@@ -8,10 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserConverter {
+    @Autowired
     private ModelMapper modelMapper;
-    public UserConverter() {}{
-        modelMapper = new ModelMapper();
-    }
+
 
     public UserDTO toDTO(User user){
         if( user == null) return null;
