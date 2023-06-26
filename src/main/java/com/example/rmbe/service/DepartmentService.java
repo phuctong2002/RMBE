@@ -30,7 +30,12 @@ public class DepartmentService {
     private IRelationRepo relationRepo;
     public void addDepartment(DepartmentDTO departmentDTO){
         Person person = personRepo.findFirstById(departmentDTO.getPerson_id());
-        departmentRepo.save(departmentConverter.toEntity(departmentDTO, person));
+        Department department = departmentRepo.save(departmentConverter.toEntity(departmentDTO, person));
+        RelationDTO relationDTO = new RelationDTO();
+        relationDTO.setDepartment_id(department.getId());
+        relationDTO.setPerson_id(department.getPerson().getId());
+        relationDTO.setRelation("Chu ho");
+        addRelation(relationDTO);
     }
     public List<DepartmentDTO> getAllDepartments(){
         List<Department> departments = departmentRepo.findAll();
