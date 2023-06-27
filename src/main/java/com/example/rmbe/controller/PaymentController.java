@@ -1,5 +1,6 @@
 package com.example.rmbe.controller;
 
+import com.example.rmbe.dto.PaymentDTO;
 import com.example.rmbe.entity.PaymentEvent;
 import com.example.rmbe.service.PaymentService;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,19 @@ public class PaymentController {
     @GetMapping("/event/")
     public ResponseEntity<Object> getAllEvents(){
         return new ResponseEntity<>(paymentService.getAllEvents(), HttpStatus.OK);
+    }
+    @PostMapping("")
+    public ResponseEntity<Object> addPayment(@RequestBody PaymentDTO paymentDTO){
+        paymentService.addPayment(paymentDTO);
+        return null;
+    }
+    @GetMapping("/")
+    public ResponseEntity<Object> getPayments(){
+        return new ResponseEntity<>( paymentService.getAllPayments(), HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getPayments(@PathVariable int id){
+        return new ResponseEntity<>( paymentService.getPaymentsByEventId( id), HttpStatus.OK);
     }
 
 }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IPaymentEventRepo extends JpaRepository<PaymentEvent, Integer> {
+    PaymentEvent findFirstById(int paymentEvent_id);
 }
