@@ -31,4 +31,8 @@ public class AbsenceService {
 
         absenceRepo.save(absenceConverter.toEntity(absenceDTO, person));
     }
+
+    public void deleteAbsence(int id) {
+        absenceRepo.deleteById(id);
+    }
 }

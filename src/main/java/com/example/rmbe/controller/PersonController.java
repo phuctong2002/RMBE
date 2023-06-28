@@ -29,5 +29,9 @@ public class PersonController {
         personService.addDead(deadDTO);
         return null;
     }
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletePerson(@PathVariable int id){
+        personService.deletePerson(id);
+        return null;
+    }
 }

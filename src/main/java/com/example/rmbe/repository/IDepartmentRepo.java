@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface IDepartmentRepo extends JpaRepository<Department, Integer> {
 
     Department findFirstById(int department_id);
+
+    Department findFirstByPersonId(int id);
 }

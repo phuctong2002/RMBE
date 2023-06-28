@@ -22,4 +22,9 @@ public class AbsenceController {
         service.addAbsence(absenceDTO);
         return null;
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteAbsence(@PathVariable int id){
+        service.deleteAbsence(id);
+        return null;
+    }
 }

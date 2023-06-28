@@ -1,5 +1,6 @@
 package com.example.rmbe.controller;
 
+import com.example.rmbe.dto.DonationDTO;
 import com.example.rmbe.entity.DonationEvent;
 import com.example.rmbe.service.DonationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +24,15 @@ public class DonationController {
         donationService.addDonationEvent(donationEvent);
         return null;
     }
+
+    @PostMapping("")
+    public ResponseEntity<Object> addDonation(@RequestBody DonationDTO donationDTO){
+        return new ResponseEntity<>(donationService.addDonation(donationDTO), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getDonationByEventId(@PathVariable int id){
+        return new ResponseEntity<>(donationService.getDonationByEventId(id), HttpStatus.OK);
+    }
+
 }

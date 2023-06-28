@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IDonationEventRepo extends JpaRepository<DonationEvent, Integer> {
+    DonationEvent findFirstById(int donationEvent_id);
 }

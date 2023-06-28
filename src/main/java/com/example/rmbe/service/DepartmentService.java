@@ -7,19 +7,25 @@ import com.example.rmbe.dto.RelationDTO;
 import com.example.rmbe.entity.Department;
 import com.example.rmbe.entity.Person;
 import com.example.rmbe.entity.Relation;
-import com.example.rmbe.repository.IDepartmentRepo;
-import com.example.rmbe.repository.IPersonRepo;
-import com.example.rmbe.repository.IRelationRepo;
+import com.example.rmbe.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class DepartmentService {
     @Autowired
     private DepartmentConverter departmentConverter;
+    @Autowired
+    private ISojournRepo sojournRepo;
+    @Autowired
+    private IDonationRepo donationRepo;
+    @Autowired
+    private IPaymentRepo paymentRepo;
     @Autowired
     private RelationConverter relationConverter;
     @Autowired
@@ -42,6 +48,15 @@ public class DepartmentService {
         return departments.stream().map( department -> departmentConverter.toDTO(department)).collect(Collectors.toList());
     }
     public void deleteDepartment(int id){
+        Department department = departmentRepo.findFirstById(id);
+        paymentRepo.deleteByDepartmentId(department.getId());
+        donationRepo.deleteByDepartmentId(department.getId());
+        List<Relation> relations = relationRepo.findByDepartment(department);
+        List<Integer> relationIds = relations.stream().map(relation -> relation.getId()).collect(Collectors.toList());
+        for(int relationId : relationIds){
+            relationRepo.deleteById(relationId);
+        }
+        sojournRepo.deleteByDepartmentId(department.getId());
         departmentRepo.deleteById(id);
     }
 
