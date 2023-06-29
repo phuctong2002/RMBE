@@ -30,4 +30,8 @@ public class SojournService {
         List<Sojourn> sojourns = sojournRepo.findAll();
         return sojourns.stream().map(sojourn -> sojournConverter.toDTO(sojourn)).collect(Collectors.toList());
     }
+
+    public void deleteSojourn(int id) {
+        sojournRepo.deleteById(id);
+    }
 }

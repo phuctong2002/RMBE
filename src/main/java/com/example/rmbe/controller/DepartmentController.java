@@ -38,4 +38,13 @@ public class DepartmentController {
         departmentService.addRelation(relationDTO);
         return null;
     }
+    @PatchMapping("/")
+    public ResponseEntity<Object> changeDepartment(@RequestBody DepartmentDTO departmentDTO){
+        return new ResponseEntity<>(departmentService.changeDepartment(departmentDTO), HttpStatus.OK);
+    }
+    @GetMapping("/change/{id}")
+    public ResponseEntity<Object> getChanges(@PathVariable int id){
+        return new ResponseEntity<>(departmentService.getChanges(id), HttpStatus.OK);
+    }
+
 }

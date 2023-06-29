@@ -22,4 +22,9 @@ public class SojournController {
     public ResponseEntity<Object> getAllSojourn(){
         return new ResponseEntity<>(sojournService.getAllSojourn(), HttpStatus.OK);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteSojourn(@PathVariable int id){
+        sojournService.deleteSojourn(id);
+        return null;
+    }
 }

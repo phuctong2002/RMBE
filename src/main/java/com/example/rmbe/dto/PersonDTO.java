@@ -23,4 +23,5 @@ public class PersonDTO {
     private String id_card;
     private String issued_by;
     private Date created_at;
+    private String address;
 }

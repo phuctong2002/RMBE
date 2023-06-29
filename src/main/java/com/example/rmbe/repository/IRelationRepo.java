@@ -21,4 +21,8 @@ public interface IRelationRepo extends JpaRepository<Relation, Integer> {
     @Query( value = "DELETE FROM quan_he where nhan_khau = :id", nativeQuery = true)
     @Transactional
     void deleteByPersonId(@Param("id") int id);
+    @Modifying
+    @Query( value = "DELETE FROM quan_he where ho_khau = :id", nativeQuery = true)
+    @Transactional
+    void deleteByDepartmentId(@Param("id") int id);
 }

@@ -41,4 +41,6 @@ public class Person {
     private Date created_at;
     @Column( name = "noi_cap")
     private String issued_by;
+    @Column( name = "thuong_tru")
+    private String address;
 }
