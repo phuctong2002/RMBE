@@ -46,5 +46,9 @@ public class DepartmentController {
     public ResponseEntity<Object> getChanges(@PathVariable int id){
         return new ResponseEntity<>(departmentService.getChanges(id), HttpStatus.OK);
     }
-
+    @PostMapping("/break")
+    public ResponseEntity<Object> breakDepartment(@RequestBody DepartmentDTO departmentDTO){
+        departmentService.breakDepartment(departmentDTO);
+        return null;
+    }
 }

@@ -51,6 +51,7 @@ public class DepartmentService {
         relationDTO.setRelation("Chu ho");
         addChange("Tao ho khau moi voi chu ho " + departmentDTO.getPerson_name(), department);
         addRelation(relationDTO);
+
     }
     public List<DepartmentDTO> getAllDepartments(){
         List<Department> departments = departmentRepo.findAll();
@@ -109,4 +110,10 @@ public class DepartmentService {
         changeRepo.save(change);
     }
 
+    public void breakDepartment(DepartmentDTO departmentDTO) {
+        // xoa cac relation o trong day di nhe
+        // add ho khau moi the la oke thoi
+        relationRepo.deleteByPersonId(departmentDTO.getPerson_id());
+        addDepartment(departmentDTO);
+    }
 }
