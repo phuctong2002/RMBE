@@ -58,4 +58,13 @@ public class PersonService {
         absenceRepo.deleteByPersonId(id);
         personRepo.deleteById(id);
     }
+
+    public void updatePerson(int id, PersonDTO personDTO) {
+        Person person = personRepo.findFirstById(id);
+        if( person == null)
+            return;
+        Person newPerson = personConverter.toEntity(personDTO);
+        newPerson.setId(id);
+        personRepo.save(newPerson);
+    }
 }

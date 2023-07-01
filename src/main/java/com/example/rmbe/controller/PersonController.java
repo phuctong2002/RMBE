@@ -34,4 +34,9 @@ public class PersonController {
         personService.deletePerson(id);
         return null;
     }
+    @PatchMapping("/{id}")
+    public ResponseEntity<Object> updatePerson(@PathVariable int id, @RequestBody PersonDTO person){
+        personService.updatePerson(id, person);
+        return null;
+    }
 }
