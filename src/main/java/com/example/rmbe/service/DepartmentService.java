@@ -49,7 +49,7 @@ public class DepartmentService {
         relationDTO.setDepartment_id(department.getId());
         relationDTO.setPerson_id(department.getPerson().getId());
         relationDTO.setRelation("Chu ho");
-        addChange("Tao ho khau moi voi chu ho " + departmentDTO.getPerson_name(), department);
+        addChange("Tao ho khau moi ", department);
         addRelation(relationDTO);
 
     }

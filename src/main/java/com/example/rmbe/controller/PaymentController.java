@@ -3,11 +3,9 @@ package com.example.rmbe.controller;
 import com.example.rmbe.dto.PaymentDTO;
 import com.example.rmbe.entity.PaymentEvent;
 import com.example.rmbe.service.PaymentService;
-import jakarta.persistence.GeneratedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

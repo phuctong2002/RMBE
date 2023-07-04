@@ -2,7 +2,6 @@ package com.example.rmbe.controller;
 
 import com.example.rmbe.dto.DepartmentDTO;
 import com.example.rmbe.dto.RelationDTO;
-import com.example.rmbe.entity.Department;
 import com.example.rmbe.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
